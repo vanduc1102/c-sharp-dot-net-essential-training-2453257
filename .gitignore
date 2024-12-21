@@ -4,3 +4,5 @@ node_modules
 npm-debug.log
 bin/
 obj/
+local-*
+c-sharp-dot-net-essential-training-2453257.sln
