@@ -15,3 +15,8 @@ foreach (string str in NumStrs) {
 
 // TODO: The TryParse method returns 'true' if the parse is successful
 
+
+var outputInt = 0;
+
+result = int.TryParse("     123 ", out outputInt);
+System.Console.WriteLine($"Parsing {NumStrs[0]} as int: {result} {outputInt}");

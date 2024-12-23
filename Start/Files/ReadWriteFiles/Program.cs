@@ -1,19 +1,63 @@
-﻿// LinkedIn Learning Course .NET Programming with C# by Joe Marini
-// Reading and Writing data from and to files
+﻿using System.IO;
 
-// Make sure the example file exists
-const string filename = "TestFile.txt";
 
-// TODO 1: WriteAllText overwrites a file with the given content
-if (!File.Exists(filename)) {
+class Program
+{
+    static void Main()
+    {
 
+
+
+
+        var currentDir = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.Parent;
+
+        System.Console.WriteLine($"Current Directory: {currentDir}");
+
+        var DirPath = currentDir + "/Challenge/FileCollection";
+
+
+        List<long> docs = new();
+        List<long> excels = new();
+        List<long> powerPoints = new();
+
+        try
+        {
+            var files = Directory.GetFiles(DirPath);
+            foreach (var file in files)
+            {
+                FileInfo fi = new FileInfo(file);
+                if (fi.Name.EndsWith(".docx"))
+                {
+                    docs.Add(fi.Length);
+                }
+
+                if (fi.Name.EndsWith(".xlsx"))
+                {
+                    excels.Add(fi.Length);
+                }
+
+                if (fi.Name.EndsWith(".pptx"))
+                {
+                    powerPoints.Add(fi.Length);
+                }
+            }
+
+            System.Console.WriteLine("~~~~ Results ~~~~");
+            System.Console.WriteLine($"Total Files: {docs.Count + excels.Count + powerPoints.Count}");
+            System.Console.WriteLine($"Excel Count: {excels.Count}");
+            System.Console.WriteLine($"Word Count: {docs.Count}");
+            System.Console.WriteLine($"PowerPoint Count: {powerPoints.Count}");
+            System.Console.WriteLine("----");
+            System.Console.WriteLine($"Total Size: {(excels.Sum() + docs.Sum() + powerPoints.Sum()).ToString("N0")}");
+            System.Console.WriteLine($"Excel Size: {excels.Sum().ToString("N0")}");
+            System.Console.WriteLine($"Word Size: {docs.Sum().ToString("N0")}");
+            System.Console.WriteLine($"PowerPoint Size: {powerPoints.Sum().ToString("N0")}");
+        }
+        catch (Exception ex)
+        {
+            System.Console.WriteLine($"Directory not found {ex.Message}");
+        }
+
+
+    }
 }
-
-// TODO 3: AppendAllText adds text to an existing file
-
-
-// TODO 4: A FileStream can be opened and written to until closed
-
-
-// TODO 2: ReadAllText reads all the content from a file
-

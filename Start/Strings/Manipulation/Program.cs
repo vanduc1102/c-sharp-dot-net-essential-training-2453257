@@ -6,18 +6,28 @@ string str2 = "This is a string";
 string str3 = "THIS is a STRING";
 string[] strs = {"one", "two", "three", "four"};
 
-// TODO: Length of a string 
+// TODO: Length of a string
 
+System.Console.WriteLine($"The length of str1 is {str1.Length}");
 
 // TODO: Access individual characters
 
+System.Console.WriteLine($"The first character of str1 is {str1[0]}");
 
 // TODO: Iterate over a string like any other sequence of values
 
+System.Console.WriteLine("Iterating over str1: " , "aa".Equals("aa"));
+System.Console.WriteLine("Iterating over str1: ");
+foreach (char c in str1)
+{
+    System.Console.Write(c);
+}
+System.Console.WriteLine();
 
-// TODO: String Concatenation         
+// TODO: String Concatenation
 string outstr;
 
+System.Console.WriteLine("Concatenating str1 and str2: {0}", str1 + str2);
 
 // TODO: Joining strings together with Join
 
